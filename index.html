@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="root">
+    <div class="music icon-music">
+
+    </div>
+    <audio src="./media/RAM WIRE - 僕らの手には何もないけど、.mp3" controls class='audioPlayer' loop></audio>
+    <div class="swipeIndicator icon-down">
+      swipe down
+    </div>
+    <div class="imgWrapper" data-no="1"><img src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/286.jpg" alt=""></div>
+    <div class="imgWrapper" data-no="2"><img src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/286.jpg" alt=""></div>
+    <div class="imgWrapper" data-no="3"><img src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/286.jpg" alt=""></div>
+    <div class="imgWrapper" data-no="4"><img src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/286.jpg" alt=""></div>
+    <div class="imgWrapper" data-no="5"><img src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/286.jpg" alt=""></div>
+    <div class="imgWrapper" data-no="6"><img src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/286.jpg" alt=""></div>
+    <div class="imgWrapper" data-no="7">
+      <p>
+         转者语： 今天看jQuery源码CSS部分，里面用到了currentStyle和getComputedStyle来获取外部样式。 因为elem.style.width只能获取elem的style属性里的样式，无法获取外部css文件中定义的样式，所以针对IE8以下以及其他浏览器，需要以这两种不同的方式获取外部css样式，即currentStyle和getComputedStyle。
+        下面这篇文章讲的不错，也比较好理解，言简意赅，在此推荐以下。 样式表有三种方式： 内嵌样式（inline Style） ：是写在Tag里面的，内嵌样式只对所有的Tag有效。 （也称作“内联样式”） 内部样式（internal
+        Style Sheet）：是写在HTML的里面的，内部样式只对所在的网页有效。 外部样式表（External Style Sheet）：如果很多网页需要用到同样的样式(Styles)，将样式(Styles)写在一个以.css为后缀的CSS文件里，然后在每个需要用到这些样式(Styles)的网页里引用这个CSS文件。
+        最常用的是style属性，在JavaScript中，通过document.getElementById(id).style.XXX就可以获取到XXX的值，但意外的是，这样做只能取到通过内嵌方式设置的样式值，即style属性里面设置的值。
+      </p>
+    </div>
+    <div class="contentWrapper">
+      gibberish
+    </div>
+    <div class="contentWrapper">
+      gibberish
+    </div>
+    <div class="contentWrapper">
+      gibberish
+    </div>
+    <div class="contentWrapper">
+      gibberish
+    </div>
+    <div class="contentWrapper">
+      gibberish
+    </div>
+    <div class="contentWrapper">
+      gibberish
+    </div>
+  </div>
+  <script type='text/javascript' src='./bundle.js'></script>
+</body>
+</html>
