@@ -8,13 +8,14 @@ const $$ = document.querySelectorAll.bind(document)
 const rootElem = $('div#root')
 const musicElem = rootElem.querySelector('.audioPlayer')
 const musicIcon = rootElem.querySelector('div.icon-music')
+const titleElem = rootElem.querySelector('div.title')
 
 let currentPage = 0
 const TOTAL_PAGE = $$('.imgWrapper').length
 
 // start playing...
 musicElem.addEventListener('canplay', (e) => {
-  // musicElem.play()
+  musicElem.play()
   musicIcon.classList.add('playing')
 })
 // adding event listeners for musicElem
@@ -29,8 +30,12 @@ musicIcon.addEventListener('click', (e) => {
 })
 
 document.addEventListener('touchmove', (e) => {
-  e.stopPropagation()
   e.preventDefault()
+})
+
+window.addEventListener('load', (e) => {
+  console.log('loaded!')
+  $('div#shade').style.display = 'none'
 })
 
 rootElem.addEventListener('touchstart', (e) => {
@@ -48,17 +53,22 @@ rootElem.addEventListener('touchend', (e) => {
 function handleSwipeUp () {
   // entering page 1...
   if (currentPage === 0) {
-    rootElem.querySelector('div.swipeIndicator').classList.add('faded')
+    rootElem.querySelector('div.swipeIndicator').classList.toggle('faded')
+    titleElem.classList.toggle('faded')
   }
   if (currentPage < TOTAL_PAGE) {
     let showedImg = [...rootElem.querySelectorAll('div.imgWrapper')].filter((elem, index) => index === currentPage)[0]
-    let content = [...rootElem.querySelectorAll('div.contentWrapper')].filter((elem, index) => index === currentPage)[0]
+    let currentContent = [...rootElem.querySelectorAll('div.contentWrapper')].filter((elem, index) => index === currentPage)[0]
+    let restContent = [...rootElem.querySelectorAll('div.contentWrapper')].filter((elem, index) => index !== currentPage)
     if (showedImg) {
       showedImg.classList.add('showed')
       showedImg.style.transform = `rotate(${(Math.random() - 0.5) * 15}deg)`
     }
-    if (content) {
-      content.classList.add('showed')
+    if (currentContent) {
+      currentContent.classList.add('showed')
+    }
+    if (restContent) {
+      restContent.forEach(elem => elem.classList.remove('showed'))
     }
     currentPage ++
   }
@@ -67,18 +77,23 @@ function handleSwipeUp () {
 
 function handleSwipeDown() {
   if (currentPage === 1) {
-    rootElem.querySelector('div.swipeIndicator').classList.remove('faded')
+    rootElem.querySelector('div.swipeIndicator').classList.toggle('faded')
+    titleElem.classList.toggle('faded')
   }
   if (currentPage > 0) {
     currentPage --
     let showedImg = [...rootElem.querySelectorAll('div.imgWrapper')].filter((elem, index) => index === currentPage)[0]
-    let content = [...rootElem.querySelectorAll('div.contentWrapper')].filter((elem, index) => index === currentPage)[0]
+    let currentContent = [...rootElem.querySelectorAll('div.contentWrapper')].filter((elem, index) => index === currentPage - 1)[0]
+    let restContent = [...rootElem.querySelectorAll('div.contentWrapper')].filter((elem, index) => index !== currentPage - 1)
     if (showedImg) {
       showedImg.classList.remove('showed')
       showedImg.style.transform = ''
     }
-    if (content) {
-      content.classList.remove('showed')
+    if (currentContent) {
+      currentContent.classList.add('showed')
+    }
+    if (restContent) {
+      restContent.forEach(elem => elem.classList.remove('showed'))
     }
   }
   console.log(currentPage)
